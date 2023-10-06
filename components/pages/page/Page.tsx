@@ -38,7 +38,7 @@ export function Page({
             {body && (
               <CustomPortableText
                 paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-                value={body}
+                value={body.content}
               />
             )}
 

@@ -1,11 +1,11 @@
 import React from 'react'
-import Content from '../block-content'
+import { CustomPortableText } from 'components/shared/CustomPortableText'
 
 const BlockText = ({ data }) => {
   return (
     <section id="block-text">
       <div className="container">
-        <Content blocks={data?.content} />
+        <CustomPortableText value={data?.content} />
       </div>
     </section>
   )

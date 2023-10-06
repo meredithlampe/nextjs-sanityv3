@@ -22,17 +22,6 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
-    // {
-    //   title: 'Page Content',
-    //   name: 'sections',
-    //   type: 'array',
-    //   of: [
-    //     // automation -- new section
-    //     { type: 'blockText' },
-    //     { type: 'dividerImage' }
-    //   ],
-    //   group: 'content'
-    // },
     defineField({
       name: 'overview',
       description:
