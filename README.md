@@ -65,7 +65,7 @@ You can use this starter to kick-start a personal website or learn these technol
 
 Use the Deploy Button below. It will let you deploy the starter using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-sanity-example) as well as connect it to your Sanity Content Lake using [the Sanity Vercel Integration][integration].
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmeredithlampe%2Fpersonal-website-nextjs-sanity&integration-ids=ac_hb2LITYajhRQ0i4QznmKH7gx)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmeredithlampe%2Fpersonal-website-nextjs-sanity&integration-ids=oac_hb2LITYajhRQ0i4QznmKH7gx)
 
 ### Step 2. Set up the project locally
 
