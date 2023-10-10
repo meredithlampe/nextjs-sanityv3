@@ -5,13 +5,9 @@ export const homePageQuery = groq`
     _id,
     footer,
     overview,
-    showcaseProjects[]->{
+    sections[]{
       _type,
-      coverImage,
-      overview,
-      "slug": slug.current,
-      tags,
-      title,
+      content
     },
     title,
   }

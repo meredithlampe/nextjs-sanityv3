@@ -23,6 +23,9 @@ import customPortableText from 'schemas/objects/custom-portable-text'
 import home from 'schemas/singletons/home'
 import settings from 'schemas/singletons/settings'
 
+// sections
+import blockText from 'schemas/sections/block-text'
+
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
   'Next.js Personal Website with Sanity.io'
@@ -66,6 +69,8 @@ export default defineConfig({
       milestone,
       timeline,
       customPortableText,
+      // Sections
+      blockText,
     ],
   },
   plugins: [

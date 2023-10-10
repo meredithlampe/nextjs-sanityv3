@@ -1,4 +1,5 @@
 import { ProjectListItem } from 'components/pages/home/ProjectListItem'
+import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
@@ -17,7 +18,7 @@ export interface HomePageProps {
 }
 
 export function HomePage({ page, settings, preview, loading }: HomePageProps) {
-  const { overview, showcaseProjects, title = 'Personal website' } = page ?? {}
+  const { overview, sections, title = 'Personal website' } = page ?? {}
 
   return (
     <>
@@ -28,18 +29,22 @@ export function HomePage({ page, settings, preview, loading }: HomePageProps) {
           {/* Header */}
           {title && <Header centered title={title} description={overview} />}
           {/* Showcase projects */}
-          {showcaseProjects && showcaseProjects.length > 0 && (
-            <div className="mx-auto max-w-[100rem] rounded-md border">
-              {showcaseProjects.map((project, key) => {
-                const href = resolveHref(project._type, project.slug)
-                if (!href) {
-                  return null
+          {sections && sections.length > 0 && (
+            <div className="flex flex-col">
+              {sections.map((section, key) => {
+                switch(section._type) {
+                  case 'blockText':
+                    if (section.content?.content) {
+                    return (
+                      <div key={key}>
+                        <CustomPortableText
+                          paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
+                          value={section.content.content}
+                        />
+                      </div>
+                    )
+                    }
                 }
-                return (
-                  <Link key={key} href={href}>
-                    <ProjectListItem project={project} odd={key % 2} />
-                  </Link>
-                )
               })}
             </div>
           )}

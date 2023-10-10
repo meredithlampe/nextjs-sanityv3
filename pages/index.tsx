@@ -62,7 +62,7 @@ export default function IndexPage(props: PageProps) {
 const fallbackPage: HomePagePayload = {
   title: '',
   overview: [],
-  showcaseProjects: [],
+  sections: [],
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {

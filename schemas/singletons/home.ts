@@ -59,15 +59,14 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      name: 'showcaseProjects',
-      title: 'Showcase projects',
+      name: 'sections',
+      title: 'Page Content',
       description:
-        'These are the projects that will appear first on your landing page.',
+        'These are the content modules that will be displayed on your home page. You can add, remove, and reorder these modules.',
       type: 'array',
       of: [
         defineArrayMember({
-          type: 'reference',
-          to: [{ type: 'project' }],
+          type: 'blockText',
         }),
       ],
     }),

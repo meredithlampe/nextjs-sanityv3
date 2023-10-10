@@ -27,12 +27,22 @@ export interface ShowcaseProject {
   title?: string
 }
 
+export interface CustomPortableText {
+  _type: string
+  content?: PortableTextBlock[]
+}
+
+export interface Section {
+  _type: string
+  content?: CustomPortableText
+}
+
 // Page payloads
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
-  showcaseProjects?: ShowcaseProject[]
+  sections?: Section[]
   title?: string
 }
 
