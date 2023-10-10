@@ -25,6 +25,7 @@ import settings from 'schemas/singletons/settings'
 
 // sections
 import blockText from 'schemas/sections/block-text'
+import fullBleedImage from 'schemas/sections/full-bleed-image'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -71,6 +72,7 @@ export default defineConfig({
       customPortableText,
       // Sections
       blockText,
+      fullBleedImage,
     ],
   },
   plugins: [

@@ -1,13 +1,24 @@
 import { groq } from 'next-sanity'
 
+// Construct our content "sections" GROQ
+export const sections =
+  groq`
+  _type,
+  _type == 'blockText' => {
+    content
+  },
+  _type == 'fullBleedImage' => {
+    image
+  }
+  `;
+
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
     footer,
     overview,
     sections[]{
-      _type,
-      content
+      ${sections}
     },
     title,
   }

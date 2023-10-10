@@ -68,6 +68,9 @@ export default defineType({
         defineArrayMember({
           type: 'blockText',
         }),
+        defineArrayMember({
+          type: 'fullBleedImage',
+        }),
       ],
     }),
   ],

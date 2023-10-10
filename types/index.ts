@@ -27,14 +27,19 @@ export interface ShowcaseProject {
   title?: string
 }
 
-export interface CustomPortableText {
+export interface BlockText {
   _type: string
   content?: PortableTextBlock[]
 }
 
+export interface FullBleedImage {
+  _type: string
+  image?: Image
+}
+
 export interface Section {
   _type: string
-  content?: CustomPortableText
+  content?: BlockText | FullBleedImage
 }
 
 // Page payloads

@@ -15,4 +15,15 @@ export default defineType({
       title: 'Content',
     }),
   ],
+  preview: {
+    select: {
+      content: 'content',
+    },
+    prepare({ content}) {
+      return {
+        subtitle: content?.content[0]?.children[0]?.text ?? "No content",
+        title: 'Block Text'
+      }
+    },
+  },
 })
