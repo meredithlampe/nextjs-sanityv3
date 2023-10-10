@@ -6,7 +6,7 @@ import { type DocumentDefinition } from 'sanity'
 import { type StructureResolver } from 'sanity/desk'
 import { Iframe } from 'sanity-plugin-iframe-pane'
 
-import { PREVIEWABLE_DOCUMENT_TYPES, iframeOptions } from '../sanity.config'
+import { HIDDEN_DOCUMENT_TYPES, PREVIEWABLE_DOCUMENT_TYPES, iframeOptions } from '../sanity.config'
 
 export const singletonPlugin = (types: string[]) => {
   return {
@@ -70,8 +70,9 @@ export const pageStructure = (
 
     // The default root list items (except custom ones)
     const defaultListItems = S.documentTypeListItems().filter(
-      (listItem) =>
-        !typeDefArray.find((singleton) => singleton.name === listItem.getId()),
+      (listItem) => {
+        return !typeDefArray.find((singleton) => singleton.name === listItem.getId()) && HIDDEN_DOCUMENT_TYPES.indexOf(listItem.getId() ?? '') === -1
+      }
     )
 
     return S.list()

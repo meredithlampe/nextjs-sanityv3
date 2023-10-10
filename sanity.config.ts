@@ -42,6 +42,11 @@ const PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS = [
 ] satisfies typeof PREVIEWABLE_DOCUMENT_TYPES
 // Used to generate URLs for drafts and live previews
 export const PREVIEW_BASE_URL = '/api/draft'
+export const HIDDEN_DOCUMENT_TYPES: string[] = [
+  'blockText',
+  'fullBleedImage',
+]
+
 export const iframeOptions = {
   url: defineUrlResolver({
     base: PREVIEW_BASE_URL,
