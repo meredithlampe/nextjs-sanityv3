@@ -25,7 +25,7 @@ export default defineType({
     defineField({
       name: 'overview',
       description:
-        'Used both for the <meta> description tag for SEO, and the personal website subheader.',
+        'Used for the <meta> description tag for SEO.',
       title: 'Overview',
       type: 'array',
       of: [
@@ -52,9 +52,19 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      type: 'customPortableText',
-      name: 'body',
-      title: 'Body',
+      name: 'sections',
+      title: 'Page Content',
+      description:
+        'These are the content modules that will be displayed on your home page. You can add, remove, and reorder these modules.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'blockText',
+        }),
+        defineArrayMember({
+          type: 'fullBleedImage',
+        }),
+      ],
     }),
   ],
   preview: {

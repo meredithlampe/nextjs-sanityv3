@@ -52,11 +52,9 @@ export interface HomePagePayload {
 }
 
 export interface PagePayload {
-  body?: {
-    content: PortableTextBlock[]
-  },
-  name?: string
+  sections?: Section[]
   overview?: PortableTextBlock[]
+  name?: string
   title?: string
   slug?: string
 }

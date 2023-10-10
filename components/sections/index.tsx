@@ -17,10 +17,10 @@ export const Section = ({ index, section }) => {
           )
         }
       case 'fullBleedImage':
-        const fullBleedImage = section.image as FullBleedImage
+        const fullBleedImage = section as FullBleedImage
         return (
           <div key={index}>
-            <ImageBox image={fullBleedImage} classesWrapper="h-[50vh] md:h-[70vh]" />
+            <ImageBox image={fullBleedImage.image} classesWrapper="h-[50vh] md:h-[70vh]" />
           </div>)
   }
   return null;

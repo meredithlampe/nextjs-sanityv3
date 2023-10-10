@@ -1,4 +1,5 @@
 import { CustomPortableText } from 'components/shared/CustomPortableText'
+import { Section } from 'components/sections'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
@@ -17,30 +18,30 @@ export interface PageProps {
 export function Page({
   page,
   settings,
-  homePageTitle,
   preview,
   loading,
 }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { body, overview, title } = page || {}
+  const { sections, title } = page || {}
 
   return (
     <>
-      <PageHead page={page} settings={settings} title={homePageTitle} />
+      <PageHead page={page} settings={settings} title={page.title} />
 
       <Layout settings={settings} preview={preview} loading={loading}>
         <div>
           <div className="mb-14">
             {/* Header */}
-            <Header title={title} description={overview} />
+            <Header title={title} description={page.overview} />
 
-            {/* Body */}
-            {body && (
-              <CustomPortableText
-                paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-                value={body.content}
-              />
-            )}
+          {/* Sections */}
+          {sections && sections.length > 0 && (
+            <div className="flex flex-col">
+              {sections.map((section, key) => 
+                <Section index={key} section={section} />
+              )}
+            </div>
+          )}
 
             {/* Workaround: scroll to top on route change */}
             <ScrollUp />
