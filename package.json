@@ -32,6 +32,7 @@
     "sanity": "3.17.0",
     "sanity-plugin-asset-source-unsplash": "1.1.1",
     "sanity-plugin-iframe-pane": "2.5.7",
+    "sanity-plugin-vercel-deploy": "^3.3.4",
     "styled-components": "5.3.11"
   },
   "devDependencies": {

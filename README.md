@@ -27,7 +27,9 @@ Download the environment variables needed to connect Next.js and the Studio to y
 npx vercel env pull
 ```
 
-### Step 3. Run Next.js locally in development mode
+Add `http://localhost:3000` with credentials to Sanity CORS origins
+
+###  Run Next.js locally in development mode
 
 ```bash
 npm install && npm run dev
@@ -37,7 +39,7 @@ When you run this development server, the changes you make in your frontend and 
 
 Your personal website should be up and running on [http://localhost:3000][localhost-3000]! You can create and edit content on [http://localhost:3000/studio][localhost-3000-studio].
 
-### Step 4. Deploy to production
+###  Deploy to production
 
 To deploy your changes to production you use `git`:
 

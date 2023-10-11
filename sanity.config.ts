@@ -5,6 +5,7 @@
 import { visionTool } from '@sanity/vision'
 import { apiVersion, dataset, previewSecretId, projectId } from 'lib/sanity.api'
 import { pageStructure, singletonPlugin } from 'plugins/settings'
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
@@ -81,6 +82,7 @@ export default defineConfig({
     ],
   },
   plugins: [
+    vercelDeployTool(),
     deskTool({
       structure: pageStructure([home, settings]),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
