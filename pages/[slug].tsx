@@ -26,6 +26,9 @@ interface Query {
 
 export default function PageSlugRoute(props: PageProps) {
   const { homePageTitle, settings, page: initialPage, draftMode } = props
+  if (!initialPage) {
+    return null
+  }
   const [page, loading] = useLiveQuery<PagePayload | null>(
     initialPage,
     pagesBySlugQuery,
