@@ -17,16 +17,6 @@
 sanity init
 ```
 
-```bash
-npx vercel link
-```
-
-Download the environment variables needed to connect Next.js and the Studio to your Sanity project:
-
-```bash
-npx vercel env pull
-```
-
 Add `http://localhost:3000` with credentials to Sanity CORS origins
 
 ###  Run Next.js locally in development mode
@@ -39,25 +29,9 @@ When you run this development server, the changes you make in your frontend and 
 
 Your personal website should be up and running on [http://localhost:3000][localhost-3000]! You can create and edit content on [http://localhost:3000/studio][localhost-3000-studio].
 
-###  Deploy to production
+## Deploy via vercel
 
-To deploy your changes to production you use `git`:
-
-```bash
-git add .
-git commit
-git push
-```
-
-Alternatively, you can deploy without a `git` hosting provider using the Vercel CLI:
-
-```bash
-npx vercel --prod
-```
-
-[vercel-deploy]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsanity-io%2Ftemplate-nextjs-personal-website&project-name=personal-website-nextjs-sanity&repository-name=personal-website-nextjs-sanity&demo-title=Personal%20Website%20with%20Built-in%20Content%20Editing&demo-description=A%20Sanity-powered%20personal%20website%20with%20built-in%20content%20editing%20and%20instant%20previews.&demo-url=https%3A%2F%2Fnextjs-personal-website.sanity.build%2F&demo-image=https%3A%2F%2Fuser-images.githubusercontent.com%2F6951139%2F206395107-e58a796d-13a9-400a-94b6-31cb5df054ab.png&integration-ids=oac_hb2LITYajhRQ0i4QznmKH7gx&external-id=nextjs;template=nextjs-personal-website-cms-sanity-v3
-
-[vercel-deploy-2]: https://vercel.com/new/clone?repository-url=repository-url=https%3A%2F%2Fgithub.com%2Fmeredithlampe%2Fpersonal-website-nextjs-sanity&project-name=personal-website-nextjs-sanity&repository-name=personal-website-nextjs-sanity&demo-title=Personal%20Website%20with%20Built-in%20Content%20Editing&demo-description=A%20Sanity-powered%20personal%20website%20with%20built-in%20content%20editing%20and%20instant%20previews.&demo-url=https%3A%2F%2Fnextjs-personal-website.sanity.build%2F&demo-image=https%3A%2F%2Fuser-images.githubusercontent.com%2F6951139%2F206395107-e58a796d-13a9-400a-94b6-31cb5df054ab.png&integration-ids=oac_hb2LITYajhRQ0i4QznmKH7gx&external-id=nextjs;template=nextjs-personal-website-cms-sanity-v3
+Add a new project in Vercel, then add the project details to a new 'Project' under the 'Deploy' tab in Sanity studio
 
 [integration]: https://www.sanity.io/docs/vercel-integration?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter
 [`.env.local.example`]: .env.local.example
