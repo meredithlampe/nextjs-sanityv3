@@ -13,8 +13,12 @@
 
 ## Configuration
 
+Go to manage.sanity.io and create a new Sanity project. Add the following to .env.local:
+
 ```bash
-sanity init
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=
+SANITY_API_READ_TOKEN=
 ```
 
 Add `http://localhost:3000` with credentials to Sanity CORS origins
