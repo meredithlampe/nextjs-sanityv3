@@ -1,6 +1,4 @@
 
-[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
-
 ### Important files and folders
 
 | File(s)                                     | Description                                             |
@@ -15,15 +13,9 @@
 
 ## Configuration
 
-### Step 1. Set up the environment
-
-Use the Deploy Button below. It will let you deploy the starter using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-sanity-example) as well as connect it to your Sanity Content Lake using [the Sanity Vercel Integration][integration].
-
-[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy-2]
-
-### Step 2. Set up the project locally
-
-[Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) that was created for you on your GitHub account. Once cloned, run the following command from the project's root directory:
+```bash
+sanity init
+```
 
 ```bash
 npx vercel link
