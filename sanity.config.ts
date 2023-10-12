@@ -30,7 +30,7 @@ import fullBleedImage from 'schemas/sections/full-bleed-image'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Next.js Personal Website with Sanity.io'
+  'Next.js / Sanity v3'
 
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
   home.name,
