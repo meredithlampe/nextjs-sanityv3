@@ -30,7 +30,7 @@ export default defineType({
     defineField({
       name: 'overview',
       description:
-        'Used both for the <meta> description tag for SEO, and project subheader.',
+        'Used for the <meta> description tag for SEO',
       title: 'Overview',
       type: 'array',
       of: [
