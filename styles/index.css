@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .custom-grid {
+    @apply grid grid-cols-8;
+    @apply gap-[8px];
+  }
+
+  .custom-margin {
+    @apply m-[8px];
+  }
+
+  @media screen and (min-width: 640px) {
+    .custom-grid {
+      @apply grid-cols-[16];
+      @apply gap-[16px];
+    }
+
+    .custom-margin {
+      @apply m-[16px];
+    }
+  }
+}
+
 html,
 body,
 #__next {
