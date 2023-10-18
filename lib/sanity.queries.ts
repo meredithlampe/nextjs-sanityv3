@@ -1,4 +1,5 @@
 import { groq } from 'next-sanity'
+import { getClient } from './sanity.client';
 
 // Construct our content "sections" GROQ
 export const sections =
@@ -85,3 +86,11 @@ export const settingsQuery = groq`
     ogImage,
   }
 `
+
+// Fetch all dynamic docs
+export async function getAllDocSlugs(doc) {
+  const data = await getClient().fetch(
+    `*[_type == "${doc}" && wasDeleted != true && isDraft != true]{ "slug": slug.current }`
+  )
+  return data
+}
