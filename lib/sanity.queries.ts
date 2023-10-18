@@ -11,6 +11,19 @@ export const sections =
     image
   }
   `;
+    // Construct our "image meta" GROQ
+  export const imageMeta = groq`
+    "alt": coalesce(alt, asset->altText),
+    asset,
+    crop,
+    customRatio,
+    clipPath,
+    hotspot,
+    "id": asset->assetId,
+    "type": asset->mimeType,
+    "aspectRatio": asset->metadata.dimensions.aspectRatio,
+    "lqip": asset->metadata.lqip
+  `
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
