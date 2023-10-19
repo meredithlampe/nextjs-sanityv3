@@ -21,7 +21,7 @@ NEXT_PUBLIC_SANITY_DATASET=
 SANITY_API_READ_TOKEN=
 ```
 
-Add `http://localhost:3000` with credentials to Sanity CORS origins
+Add `http://localhost:3000` and `https://vercel-project-name.vercel.app` with credentials to Sanity CORS origins
 
 ###  Run Next.js locally in development mode
 

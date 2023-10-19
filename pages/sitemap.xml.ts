@@ -23,7 +23,7 @@ function generateSiteMap(
      ${allPageSlugs.map((pageSlug) => {
        return `
             <url>
-                <loc>https://xlrecordings.com${pageSlug.slug}</loc>
+                <loc>https://domain-name.com${pageSlug.slug}</loc>
             </url>
          `
      })}
