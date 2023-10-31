@@ -19,6 +19,7 @@ import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
 import duration from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
+import link from 'schemas/objects/link'
 import timeline from 'schemas/objects/timeline'
 import customPortableText from 'schemas/objects/custom-portable-text'
 import home from 'schemas/singletons/home'
@@ -76,6 +77,7 @@ export default defineConfig({
       milestone,
       timeline,
       customPortableText,
+      link,
       // Sections
       blockText,
       fullBleedImage,

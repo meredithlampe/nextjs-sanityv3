@@ -16,20 +16,22 @@ export default defineType({
       type: 'array',
       of: [
         {
-          title: 'Reference',
-          type: 'reference',
-          to: [
-            {
-              type: 'home',
-            },
-            {
-              type: 'page',
-            },
-            {
-              type: 'project',
-            },
-          ],
-        },
+        title: 'Link',
+        name: 'link',
+        type: 'object',
+        fields: [
+          {
+            title: 'link',
+            name: 'link',
+            type: 'link',
+          },
+          {
+            title: 'Text',
+            name: 'text',
+            type: 'string',
+          }
+        ]
+      }
       ],
     }),
     defineField({

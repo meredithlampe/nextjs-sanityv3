@@ -76,6 +76,19 @@ export interface ProjectPayload {
 
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
-  menuItems?: MenuItem[]
+  menuItems?: Array<TextLink>
   ogImage?: Image
+}
+
+export interface Link {
+  _type: string
+  url?: string
+  page: PagePayload
+  type: string
+}
+
+export interface TextLink {
+  _type: string
+  text: string
+  link: Link
 }
