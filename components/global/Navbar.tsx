@@ -6,29 +6,27 @@ interface NavbarProps {
   menuItems?: MenuItem[]
 }
 
+function MenuLink(props) {
+  const menuItem = props.menuItem
+  const href =
+    menuItem.link.type === 'internal'
+      ? resolveHref(menuItem?.link._type, menuItem?.link?.page.slug)
+      : menuItem.link.url
+  if (!href) {
+    return null
+  }
+  return (
+    <Link className={`text-lg hover:text-black md:text-xl`} href={href}>
+      {menuItem.text}
+    </Link>
+  )
+}
+
 export function Navbar({ menuItems }: NavbarProps) {
   return (
     <div className="sticky top-0 z-10 flex flex-wrap items-center gap-x-5 bg-white/80 px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32">
       {menuItems &&
-        menuItems.map((menuItem, key) => {
-          const href = resolveHref(menuItem?._type, menuItem?.slug)
-          if (!href) {
-            return null
-          }
-          return (
-            <Link
-              key={key}
-              className={`text-lg hover:text-black md:text-xl ${
-                menuItem?._type === 'home'
-                  ? 'font-extrabold text-black'
-                  : 'text-gray-600'
-              }`}
-              href={href}
-            >
-              {menuItem.title}
-            </Link>
-          )
-        })}
+        menuItems.map((menuItem, key) => <MenuLink menuItem={menuItem} />)}
     </div>
   )
 }

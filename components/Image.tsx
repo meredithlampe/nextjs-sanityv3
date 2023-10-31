@@ -15,7 +15,21 @@ const options = {
 const sanityClient = getClient()
 const imageBuilder = sanityImage(sanityClient)
 
-export function buildSrc(image, { width, height, format, quality }: { image?: any, width?: number | null, height?: number | null, format?: ImageFormat | null, quality?: number | null} ) {
+export function buildSrc(
+  image,
+  {
+    width,
+    height,
+    format,
+    quality,
+  }: {
+    image?: any
+    width?: number | null
+    height?: number | null
+    format?: ImageFormat | null
+    quality?: number | null
+  },
+) {
   let imgSrc = imageBuilder.image(image)
 
   if (width) {
@@ -51,19 +65,19 @@ const Image = ({
   quality = 90,
   callback = () => {},
   ...props
-} : {
-  alt: string,
-  src: any,
-  sizes: string,
-  width?: number | null,
-  height?: number | null,
-  fill?: boolean,
-  objectFit?: string,
-  lazyBoundary?: string,
-  filter?: string,
-  priority?: boolean,
-  quality?: number,
-  callback?: any,
+}: {
+  alt: string
+  src: any
+  sizes: string
+  width?: number | null
+  height?: number | null
+  fill?: boolean
+  objectFit?: string
+  lazyBoundary?: string
+  filter?: string
+  priority?: boolean
+  quality?: number
+  callback?: any
 }) => {
   // state of our image load (used for animation purposes)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -86,12 +100,11 @@ const Image = ({
   // calculate our image dimensions (if not "fill" layout)
   const imgWidth = !fill ? width ?? 2000 : null
 
-  const imgHeight =
-    !fill
-      ? height ?? imgAspectRatio
-        ? Math.round(imgWidth * imgAspectRatio) / 100
-        : null
+  const imgHeight = !fill
+    ? height ?? imgAspectRatio
+      ? Math.round(imgWidth * imgAspectRatio) / 100
       : null
+    : null
 
   // build our image URL
   const imgUrl = isStatic
