@@ -1,6 +1,49 @@
 import { groq } from 'next-sanity'
 import { getClient } from './sanity.client';
 
+  // Construct our "image meta" GROQ
+export const imageMeta = groq`
+  "alt": coalesce(alt, asset->altText),
+  asset,
+  crop,
+  customRatio,
+  clipPath,
+  hotspot,
+  "id": asset->assetId,
+  "type": asset->mimeType,
+  "aspectRatio": asset->metadata.dimensions.aspectRatio,
+  "lqip": asset->metadata.lqip
+`
+export const pageImpl = groq`
+    id,
+    "type": _type,
+    slug,
+    title,
+    seo,
+    _type,
+`
+
+const markDefLink = groq`
+    _type == "link" => {
+      "url": @.url,
+      "isButton": @.isButton,
+      "styles": @.styles{style, isLarge, isBlock},
+      "page":@.page->{
+        ${pageImpl}
+      }
+    },
+`
+
+export const ptContent = groq`
+  content[]{
+    ...,
+    markDefs[]{
+      ...,
+      ${markDefLink}
+    }
+  },
+`
+
 // Construct our content "sections" GROQ
 export const sections =
   groq`
@@ -9,22 +52,14 @@ export const sections =
     content
   },
   _type == 'fullBleedImage' => {
-    image
+    photo{
+      ${imageMeta}
+    },
+    text{
+        ${ptContent}
+    }
   }
   `;
-    // Construct our "image meta" GROQ
-  export const imageMeta = groq`
-    "alt": coalesce(alt, asset->altText),
-    asset,
-    crop,
-    customRatio,
-    clipPath,
-    hotspot,
-    "id": asset->assetId,
-    "type": asset->mimeType,
-    "aspectRatio": asset->metadata.dimensions.aspectRatio,
-    "lqip": asset->metadata.lqip
-  `
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
@@ -75,22 +110,61 @@ export const pagePaths = groq`
   *[_type == "page" && slug.current != null].slug.current
 `
 
+export const link = groq`
+    _type,
+    type,
+    url,
+    page->{
+      _type,
+      slug
+    }
+`
+
+export const menuLink = groq`
+    text,
+    link {
+      ${link}
+    }
+`
+
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
-    menuItems[]->{
-      text,
+    menuItemsLeft[]{
+      ${menuLink}
+    },
+    photo {
+      ${imageMeta}
+    },
+    menuItemsRight[]{
+      ${menuLink}
+    },
+    footerBackgroundImage{
+      ${imageMeta}
+    },
+    footerHeaderOne,
+    footerTextOne,
+    footerHeaderTwo,
+    footerTextTwo,
+    footerSocialLinks[]{
       link {
-        _type,
-        type,
-        url,
-        page->{
-          _type,
-          slug
-        }
+        ${link}
+      },
+      photo {
+        ${imageMeta}
       }
     },
-    ogImage,
+    footerTextThree,
+    footerLinks[]{
+      ${menuLink}
+    },
+    footerLogo{
+      ${imageMeta}
+    },
+    footerCopyrightText,
+    footerLegalLinks[]{
+      ${menuLink}
+    }
   }
 `
 

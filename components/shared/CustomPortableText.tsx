@@ -2,6 +2,7 @@ import { PortableText, PortableTextComponents } from '@portabletext/react'
 import type { PortableTextBlock } from '@portabletext/types'
 import ImageBox from 'components/shared/ImageBox'
 import { TimelineSection } from 'components/shared/TimelineSection'
+import { resolveHref } from 'lib/sanity.links'
 import type { Image } from 'sanity'
 
 export function CustomPortableText({
@@ -19,10 +20,15 @@ export function CustomPortableText({
     },
     marks: {
       link: ({ children, value }) => {
+        const link = value
+        const href =
+          link.type === 'internal'
+            ? resolveHref(link.page._type, link.page.slug.current)
+            : link.url
         return (
           <a
             className="underline transition hover:opacity-50"
-            href={value?.href}
+            href={href}
             rel="noreferrer noopener"
           >
             {children}
