@@ -6,12 +6,12 @@ interface NavbarProps {
   menuItems?: MenuItem[]
 }
 
-function MenuLink(props) {
+function MenuLink(props: {menuItem: MenuItem}) {
   const menuItem = props.menuItem
   const href =
-      menuItem?.link.type === 'internal'
-        ? resolveHref(menuItem?.link?.page?._type, menuItem?.link?.page.slug)
-        : menuItem?.link.url
+    menuItem.link.type === 'internal'
+      ? resolveHref(menuItem?.link._type, menuItem?.link?.page.slug)
+      : menuItem.link.url
   if (!href) {
     return null
   }

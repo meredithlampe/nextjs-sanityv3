@@ -2,9 +2,8 @@ import type { PortableTextBlock } from '@portabletext/types'
 import type { Image } from 'sanity'
 
 export interface MenuItem {
-  _type: string
-  slug?: string
-  title?: string
+  text: string,
+  link: Link
 }
 
 export interface MilestoneItem {
@@ -57,6 +56,17 @@ export interface PagePayload {
   name?: string
   title?: string
   slug?: string
+}
+
+export interface Slug {
+  current: string
+}
+
+export interface Page {
+  name?: string
+  title?: string
+  slug?: Slug
+  _type: string
 }
 
 export interface ProjectPayload {
