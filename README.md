@@ -13,12 +13,20 @@
 
 ## Configuration
 
-Go to manage.sanity.io and create a new Sanity project. Add the following to .env.local:
-
-```bash
-NEXT_PUBLIC_SANITY_PROJECT_ID=
-NEXT_PUBLIC_SANITY_DATASET=
-SANITY_API_READ_TOKEN=
+run 
+```
+ npm -y create sanity@latest
+ ? Select dataset to use production
+? Would you like to add configuration files for a Sanity project in this Next.js folder? Yes
+? Do you want to use TypeScript? Yes
+? Would you like an embedded Sanity Studio? Yes
+? Would you like to use the Next.js app directory for routes? No
+? What route do you want to use for the Studio? /studio
+? File /pages/studio/[[...index]].tsx already exists. Do you want to overwrite it? No
+? File /sanity.config.ts already exists. Do you want to overwrite it? No
+? File /sanity.cli.ts already exists. Do you want to overwrite it? No
+? Select project template to use Clean project with no predefined schemas
+? Would you like to add the project ID and dataset to your .env file? Yes
 ```
 
 Add `http://localhost:3000` and `https://vercel-project-name.vercel.app` with credentials to Sanity CORS origins

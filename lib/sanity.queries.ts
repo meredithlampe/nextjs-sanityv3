@@ -130,41 +130,11 @@ export const menuLink = groq`
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
-    menuItemsLeft[]{
+    menuItems[]{
+      text,
       ${menuLink}
     },
-    photo {
-      ${imageMeta}
-    },
-    menuItemsRight[]{
-      ${menuLink}
-    },
-    footerBackgroundImage{
-      ${imageMeta}
-    },
-    footerHeaderOne,
-    footerTextOne,
-    footerHeaderTwo,
-    footerTextTwo,
-    footerSocialLinks[]{
-      link {
-        ${link}
-      },
-      photo {
-        ${imageMeta}
-      }
-    },
-    footerTextThree,
-    footerLinks[]{
-      ${menuLink}
-    },
-    footerLogo{
-      ${imageMeta}
-    },
-    footerCopyrightText,
-    footerLegalLinks[]{
-      ${menuLink}
-    }
+    ogImage,
   }
 `
 
