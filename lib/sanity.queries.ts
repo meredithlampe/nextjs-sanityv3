@@ -17,10 +17,13 @@ export const imageMeta = groq`
 export const pageImpl = groq`
     id,
     "type": _type,
-    slug,
-    title,
     seo,
     _type,
+    _id,
+    body,
+    overview,
+    title,
+    "slug": slug.current,
 `
 
 const markDefLink = groq`
@@ -87,18 +90,22 @@ export const pagesBySlugQuery = groq`
   }
 `
 
+export const project = groq`
+id,
+"type": _type,
+seo,
+_type,
+backgroundColor,
+_id,
+body,
+overview,
+title,
+"slug": slug.current,
+`
+
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
-    _id,
-    client,
-    coverImage,
-    description,
-    duration,
-    overview,
-    site,
-    "slug": slug.current,
-    tags,
-    title,
+    ${project}
   }
 `
 
@@ -115,8 +122,7 @@ export const link = groq`
     type,
     url,
     page->{
-      _type,
-      slug
+      ${pageImpl}
     }
 `
 
@@ -131,7 +137,6 @@ export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
     menuItems[]{
-      text,
       ${menuLink}
     },
     ogImage,
