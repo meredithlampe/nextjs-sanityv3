@@ -10,13 +10,13 @@ function MenuLink(props: {menuItem: MenuItem}) {
   const menuItem = props.menuItem
   const href =
     menuItem.link.type === 'internal'
-      ? resolveHref(menuItem?.link._type, menuItem?.link?.page.slug)
+      ? resolveHref(menuItem?.link.page?.type, menuItem?.link?.page.slug)
       : menuItem.link.url
   if (!href) {
     return null
   }
   return (
-    <Link className={`text-lg hover:text-black md:text-xl`} href={href}>
+    <Link href={href}>
       {menuItem.text}
     </Link>
   )

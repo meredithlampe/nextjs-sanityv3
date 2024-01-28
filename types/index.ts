@@ -56,6 +56,8 @@ export interface PagePayload {
   name?: string
   title?: string
   slug?: string
+  type: string
+  _type: string
 }
 
 export interface Slug {
