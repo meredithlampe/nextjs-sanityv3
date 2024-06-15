@@ -10,6 +10,13 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
+      name: 'siteTitle',
+      title: 'Site Title',
+      type: 'string',
+      description: 'Shown as a prefix on all page tabs, i.e. "Site Title | Page Title"',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'menuItems',
       title: 'Menu Item list',
       description: 'Links displayed on the header of your site.',

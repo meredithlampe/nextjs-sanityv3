@@ -133,13 +133,27 @@ export const menuLink = groq`
     }
 `
 
+export const imageLink = groq`
+    image{
+      ${imageMeta}
+    },
+    link {
+      ${link}
+    }
+`
+
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
-    footer,
     menuItems[]{
       ${menuLink}
     },
+    socialLinks[]{
+      ${imageLink}
+    },
+    footerTextLeft[],
+    footerTextRight[],
     ogImage,
+    siteTitle
   }
 `
 
