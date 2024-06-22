@@ -4,6 +4,7 @@ import cx from 'classnames'
 import sanityImage from '@sanity/image-url'
 import { getClient } from 'lib/sanity.client'
 import { ImageFormat } from '@sanity/image-url/lib/types/types'
+import { ImagePayload } from 'types'
 
 const options = {
   dataset: process.env.SANITY_PROJECT_DATASET,
@@ -24,19 +25,19 @@ export function buildSrc(
     quality,
   }: {
     image?: any
-    width?: number | null
-    height?: number | null
+    width?: number | string | null
+    height?: number | string | null
     format?: ImageFormat | null
     quality?: number | null
   },
 ) {
   let imgSrc = imageBuilder.image(image)
 
-  if (width) {
+  if (width && typeof width === 'number') {
     imgSrc = imgSrc.width(Math.round(width))
   }
 
-  if (height) {
+  if (height && typeof height === 'number') {
     imgSrc = imgSrc.height(Math.round(height))
   }
 
@@ -59,26 +60,15 @@ const Image = ({
   sizes,
   fill = false,
   objectFit = 'cover',
+  objectPosition = 'right',
   lazyBoundary = '100px',
   filter = 'none',
   priority = false,
   quality = 90,
   callback = () => {},
+  className = '',
   ...props
-}: {
-  alt: string
-  src: any
-  sizes: string
-  width?: number | null
-  height?: number | null
-  fill?: boolean
-  objectFit?: string
-  lazyBoundary?: string
-  filter?: string
-  priority?: boolean
-  quality?: number
-  callback?: any
-}) => {
+}: ImagePayload) => {
   // state of our image load (used for animation purposes)
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -98,7 +88,7 @@ const Image = ({
       : null
 
   // calculate our image dimensions (if not "fill" layout)
-  const imgWidth = !fill ? width ?? 2000 : null
+  const imgWidth = !fill ? (typeof width === 'number' ? width : 2000) : null
 
   const imgHeight = !fill
     ? height ?? imgAspectRatio
@@ -116,27 +106,29 @@ const Image = ({
 
   return (
     <div
-      className={cx('block transition-opacity duration-500 ease-linear', {
-        'opacity-0': !isLoaded,
-      })}
-      style={{ filter: filter }}
+      className={cx(
+        `${
+          src.dropShadow ? 'drop-shadow' : ''
+        } h-full relative object-${objectFit} object-${objectPosition} flex items-center`,
+        {
+          'opacity-0': !isLoaded,
+        },
+      )}
+      // style={{ filter: filter }}
     >
       <NextImage
+        className={`object-${objectPosition} object-${objectFit} ${className}`}
         alt={imgAlt}
         src={imgUrl}
         width={imgWidth ?? undefined}
         height={imgHeight ?? undefined}
         sizes={sizes}
         fill={fill}
-        // layout={layout} deprecated
-        // objectFit={objectFit} // deprecated
-        // lazyBoundary={lazyBoundary} // deprecated
         priority={priority}
         onLoadingComplete={() => {
           callback(true)
           setIsLoaded(true)
         }}
-        // {...loader} deprecated
         {...props}
       />
     </div>

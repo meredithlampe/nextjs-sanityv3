@@ -1,19 +1,15 @@
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import type { FullBleedImage, BlockText, HomePagePayload } from 'types'
 import ImageBox from 'components/shared/ImageBox'
+import type { BlockText as BlockTextType, FullBleedImage, HomePagePayload } from 'types'
+
+import BlockText from './block-text'
 
 export const Section = ({ index, section }) => {
     switch(section._type) {
       case 'blockText':
-        const blockTextContent = section.content as BlockText
+        const blockTextContent = section.content as BlockTextType
         if (blockTextContent.content) {
           return (
-            <div key={index}>
-              <CustomPortableText
-                paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-                value={blockTextContent.content}
-              />
-            </div>
+            <BlockText key={index} data={blockTextContent} />
           )
         }
       case 'fullBleedImage':

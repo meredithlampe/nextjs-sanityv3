@@ -141,6 +141,16 @@ export const imageLink = groq`
       ${link}
     }
 `
+// from color-input plugin
+// https://www.sanity.io/plugins/color-input
+export const color = groq`
+  alpha,
+  hex,
+  hsl,
+  hsv,
+  rgb,
+  _type,
+`
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{

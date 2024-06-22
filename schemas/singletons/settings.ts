@@ -16,6 +16,16 @@ export default defineType({
       description: 'Shown as a prefix on all page tabs, i.e. "Site Title | Page Title"',
       validation: (rule) => rule.required(),
     }),
+    // site logo
+    defineField({
+      name: 'logo',
+      title: 'Site Logo',
+      type: 'image',
+      description: 'Displayed in the header of your site.',
+      options: {
+        hotspot: true,
+      },
+    }),
     defineField({
       name: 'menuItems',
       title: 'Menu Item list',
